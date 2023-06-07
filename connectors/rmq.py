@@ -30,6 +30,7 @@ class Connector(object):
         self.connection.close()
         print("Connection closed.")
 
+    # consume and collect messages
     def receiver(self):
         messages = []
         channel = self.connection.channel()
@@ -37,8 +38,9 @@ class Connector(object):
         queue_name = result.method.queue
 
         def callback(ch, method, properties, body):
-            messages.append(body.decode())
-            print(body.decode())
+            body = json.loads(body)
+            messages.append(body)
+            print(body)
             
         channel.queue_bind(queue = queue_name, exchange = exchange, routing_key = routing_key)
 

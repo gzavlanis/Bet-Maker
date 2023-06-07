@@ -1,8 +1,7 @@
 from connectors.rmq import Connector
-from helpers.helpers import *
-from dotenv import load_dotenv
-import os
+import json
 
 connection = Connector()
 data = connection.receiver()
-print("Received: ", data)
+
+print(data)

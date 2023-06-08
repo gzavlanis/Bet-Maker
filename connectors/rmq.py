@@ -21,6 +21,7 @@ class Connector(object):
         try:
             self.connection = pika.BlockingConnection(pika.URLParameters(host))
             print(f"[v] Connection with {host} was successfull.")
+            print('Receiving messages. To exit press CTRL+C.')
         except Exception as error:
             print("[x] Error:", error)
             self.connection = pika.BlockingConnection(pika.URLParameters(host))
@@ -42,18 +43,7 @@ class Connector(object):
             messages.append(body)
             
         channel.queue_bind(queue = queue_name, exchange = exchange, routing_key = routing_key)
-
         channel.basic_consume(queue = queue_name, on_message_callback = callback, auto_ack = True)
-        print('[*] Waiting for messsages. To exit press CTRL+C.')
-        try:
-            try:
-                channel.start_consuming()
-            except Exception as error:
-                print("Error:", error)
-        except KeyboardInterrupt:
-            print('Interrupted from user')
-            channel.stop_consuming()
-            self.close_connection()
 
+        channel.start_consuming()
         return messages
-

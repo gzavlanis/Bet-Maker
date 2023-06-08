@@ -40,7 +40,6 @@ class Connector(object):
         def callback(ch, method, properties, body):
             body = json.loads(body)
             messages.append(body)
-            print(body)
             
         channel.queue_bind(queue = queue_name, exchange = exchange, routing_key = routing_key)
 
@@ -51,10 +50,10 @@ class Connector(object):
                 channel.start_consuming()
             except Exception as error:
                 print("Error:", error)
-
         except KeyboardInterrupt:
             print('Interrupted from user')
             channel.stop_consuming()
             self.close_connection()
 
         return messages
+

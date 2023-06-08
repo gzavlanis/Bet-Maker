@@ -17,7 +17,7 @@ def fetchUuids(list):
             uuids.append(dict.get('properties', {}).get('uuid'))
     return uuids
 
-def pickUuids(uuids, num):
+def pickUuids(uuids, num): # from the list of all 
     picked_uuids = []
     indexes = np.random.choice(range(1, len(uuids)), num, replace = False)
     for index in indexes:

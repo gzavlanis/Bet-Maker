@@ -1,8 +1,8 @@
-import requests
+import requests, random
 import numpy as np
 
-def fetchMarkets(dictionary, index):
-    return dictionary[index].get('body', {}).get('markets', [])
+def fetchMarkets(message):
+    return message.get('body', {}).get('markets', [])
 
 def fetchOdds(markets_list):
     odds_list = []
@@ -17,7 +17,10 @@ def fetchUuids(list):
             uuids.append(dict.get('properties', {}).get('uuid'))
     return uuids
 
-def pickUuids(uuids, num): # from the list of all 
+def pickNumOfOdds(max_number):
+    return random.randint(0, max_number)
+
+def pickUuids(uuids, num): # from the list of all pick a num of odds
     picked_uuids = []
     indexes = np.random.choice(range(1, len(uuids)), num, replace = False)
     for index in indexes:

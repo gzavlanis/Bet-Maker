@@ -15,7 +15,7 @@ Windows:
 
 ```
 python -m venv .venv
-\.venv\Scripts\activate
+.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -28,21 +28,18 @@ pip install requirements.txt
 ```
 ## Environment
 
-#### Create your file as follows:
+#### Create your .env file as follows:
 
 | Variable | Usage |
 | ------------ | -------------------------------------------------------------- |
-| PG_HOST | **string** the url of the host |
-| PG_PORT | **string** the port of connection |
-| PG_USER | **string** the username |
-| PG_PASSWORD | **string** the password to connect |
-| PG_DATABASE | **string** the name of the database |
-| API_KEY | **string** your secret key to connect to Openai API |
-| RUNNING_HOURS | **string** the time that the scheduler will rerun the app in hours |
+| RMQ_URI | **string** the uri to make connection to Rabbit MQ |
+| API_URL | **string** the url of the client API |
+| API_KEY | **string** api key taken from client panel |
+| EXCHANGE | **string** the Rabit MQ exchange to connect the queue in order to recieve messages |
+| QUEUE_NAME | **string** the name of the queue that the project creates |
+| ROUTING_KEY | **string** depending of the routing key, you can change the type of data you receive |
+| BET_TIME | **string** the time in minutes between every fake bet creation |
 | RUNNING_MINUTES | **string** the time that the scheduler will rerun the app in minutes |
-| LANG_ID | **string** for test reasons you can add a specifing lang_id to take translations only in one language |
-
-#### Τhe scheduler runs the main function again and again in a period of time defined by you. This fuction check the table that you created and the original dataset and collects data that they don't have translation. Then, runs the translation process again for these data.
-#### The main function takes pamateres, depends on what dataset you wan to translate. You can define the jobs of the scheduler and the parameters of the main function in the app.py file, which is the running file.
+| MAX_ODDS | **string** the max number of odds that the bet will have |
 
 ### That's it Enjoy!

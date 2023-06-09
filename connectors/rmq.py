@@ -59,5 +59,8 @@ class Connector:
     def bet_maker(self):
         all_uuids = fetchUuids(fetchOdds(fetchMarkets(self.message)))
         picked_uuids = pickUuids(all_uuids, int(pickNumOfOdds(int(max_odds))))
-        print("The bets were picked are: ", picked_uuids)
+        if len(picked_uuids) == 0:
+            print("No odds picked this time.")
+        else:
+            print("The bets were picked are: ", picked_uuids)
         makeRequest(url, object(picked_uuids), headers())

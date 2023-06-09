@@ -9,4 +9,4 @@ def main():
         connection.close_connection()
 
 if __name__ == '__main__':
-        main()
+    main()

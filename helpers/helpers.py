@@ -22,6 +22,7 @@ def pickNumOfOdds(max_number):
 
 def pickUuids(uuids, num): # from the list of all pick a num of odds
     picked_uuids = []
+    if len(uuids) == 0: pass
     indexes = np.random.choice(range(1, len(uuids)), num, replace = True)
     for index in indexes:
         picked_uuids.append(uuids[index])

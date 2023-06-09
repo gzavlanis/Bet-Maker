@@ -13,5 +13,5 @@ def main():
         connection.close_connection()
 
 if __name__ == '__main__':
-    while True:
+    while True: # keep running no matter what
         main()

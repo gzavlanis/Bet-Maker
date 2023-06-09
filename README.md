@@ -1,4 +1,5 @@
-# create fake bets in specific platform
+# Bet Maker Application
+## Create fake bets in specific platform
 
 #### This application creates a connection in an RMQ exchange, which corresponds with a platform.
 #### After that, it collects random messages and pick some odds of them to create a fake bet request in client api.

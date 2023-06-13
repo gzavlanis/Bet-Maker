@@ -42,7 +42,11 @@ class Connector:
         queue_name = result.method.queue
         channel.queue_bind(queue = queue_name, exchange = exchange, routing_key = routing_key)
         channel.basic_consume(queue = queue_name, on_message_callback = self.callback, auto_ack = True)
-        channel.start_consuming()
+        try:
+            channel.start_consuming()
+        except Exception as error:
+            print("Error: ", error)
+            channel.stop_consuming()
     
     def close_connection(self):
         self.connection.close()

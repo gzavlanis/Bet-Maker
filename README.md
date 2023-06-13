@@ -43,4 +43,9 @@ pip install requirements.txt
 | RUNNING_MINUTES | **string** the time that the scheduler will rerun the app in minutes |
 | MAX_ODDS | **string** the max number of odds that the bet will have |
 
+#### To run this program, write in your terminal:
+```
+python main.py
+```
+
 ### That's it Enjoy!
